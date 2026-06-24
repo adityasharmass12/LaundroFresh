@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaundroFresh - Premium Laundry & Dry Cleaning</title>
+    <meta name="description" content="LaundroFresh offers premium laundry, dry cleaning, and ironing services with free pickup and delivery. Book your service today!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  
+    <header class="navbar-header">
+        <div class="nav-container">
+            <div class="logo-area">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                <span>LaundroFresh</span>
+            </div>
+            <nav class="navigation-menu">
+                <a href="#home">Home</a>
+                <a href="#services-overview">Services</a>
+                <a href="#booking">Booking</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Us</a>
+            </nav>
+            <a href="#booking" class="cta-nav-button">Book Now</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <h1>Premium Laundry Care Delivered To Your Doorstep</h1>
+                <p>We provide professional cleaning, wash & fold, dry cleaning, and ironing services with free collection and delivery. Experience clean clothes without the hassle.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10k+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24h</span>
+                        <span class="stat-label">Average Turnaround</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-form-content" id="book-form">
+                <div class="form-wrapper">
+                    <h2>Schedule Your Pickup</h2>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAddress">Email Address</label>
+                            <input type="email" id="emailAddress" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceType">Service Required</label>
+                                <input type="text" id="serviceType" readonly placeholder="Add services to your cart first" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickupDate">Preferred Pickup Date</label>
+                            <input type="date" id="pickupDate" required>
+                        </div>
+                        <button type="submit" class="submit-booking-btn">Book Now</button>
+                    </form>
+                    <div id="bookingMessage" class="booking-message-container hidden">Thank you For Booking the Service We will get back to you soon!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="services-overview" class="service-overview-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Our Service Overview</h2>
+                <p>We offer a wide range of laundry and cleaning services to meet all your needs.</p>
+            </div>
+            <div class="overview-stats">
+                <div class="overview-stat-card">
+                    <span class="overview-stat-number">15+</span>
+                    <span class="overview-stat-label">Services</span>
+                </div>
+                <div class="overview-stat-card">
+                    <span class="overview-stat-number">240+</span>
+                    <span class="overview-stat-label">Customers</span>
+                </div>
+                <div class="overview-stat-card">
+                    <span class="overview-stat-number">2+</span>
+                    <span class="overview-stat-label">Years</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Book Your Services</h2>
+                <p>Browse our services, add what you need to your cart, and see the total instantly.</p>
+            </div>
+            <div class="booking-layout">
+
+         
+                <div class="cart-panel">
+                    <h3>Your Cart</h3>
+                    <div id="cartItems" class="cart-items-list">
+                        <p class="cart-empty-msg" id="cartEmptyMsg">Your cart is empty. Add services from the list!</p>
+                    </div>
+                    <div class="cart-total-bar">
+                        <span>Total:</span>
+                        <span id="cartTotal">₹0</span>
+                    </div>
+                    <a href="#book-form" class="proceed-book-btn" id="proceedBookBtn" style="display: none;">Proceed to Book</a>
+                </div>
+
+                
+                <div class="service-list-panel">
+                    <h3>Available Services</h3>
+                    <div id="serviceList" class="service-list">
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="services" class="quality-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Why Choose LaundroFresh</h2>
+                <p>We are dedicated to providing the highest quality care for your garments, tailored to your exact needs.</p>
+            </div>
+            <div class="qualities-grid">
+                <div class="quality-card">
+                    <div class="quality-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 11l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Premium Services</h3>
+                    <p>We use eco-friendly solvents and premium detergents to ensure your garments are bright, fresh, and last longer.</p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Quick Support</h3>
+                    <p>Our dedicated customer support team is available round-the-clock to answer any queries and assist with your orders.</p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Timely Delivery</h3>
+                    <p>We respect your time. With our express delivery options, we clean and return your laundry within 24 hours.</p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>Affordable Prices</h3>
+                    <p>High-quality laundry care doesn't have to break the bank. We offer highly competitive and transparent pricing packages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <div class="newsletter-content">
+                <h2>Join Our Newsletter</h2>
+                <p>Stay informed about our latest laundry tips, promotional deals, and spin updates.</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <div class="input-row">
+                        <input type="text" id="subscriberName" required placeholder="Full Name">
+                        <input type="email" id="subscriberEmail" required placeholder="Email Address">
+                    </div>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+                <div id="newsletterMessage" class="newsletter-message hidden">Thank you for subscribing to our newsletter!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about" class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-area">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        <span>LaundroFresh</span>
+                    </div>
+                    <p>Redefining laundry services with premium-grade washing, unmatched speeds, and affordable prices since 2018.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>About Us</h4>
+                    <p class="about-text">LaundroFresh is committed to making laundry simple, fast, and eco-friendly. We use modern energy-efficient equipment and biodegradable detergents to minimize our footprint while delivering immaculate results.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Important Links</h4>
+                    <ul>
+                        <li><a href="#services-overview">Our Services</a></li>
+                        <li><a href="#booking">Book Services</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div id="contact" class="footer-column">
+                    <h4>Contact Us</h4>
+                    <p>Email: support@laundrofresh.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Address: 123 Bubble Way, Soap City, SC 45678</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LaundroFresh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
