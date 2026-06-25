@@ -61,7 +61,6 @@ let bookingMessage = document.getElementById("bookingMessage");
 let bookingError = document.getElementById("bookingError");
 let cartError = document.getElementById("cartError");
 
-// Insert your EmailJS Public Key here
 let EMAILJS_PUBLIC_KEY = "ScxUNJavcLQmdDxk8"; 
 emailjs.init(EMAILJS_PUBLIC_KEY);
 
@@ -97,7 +96,7 @@ bookForm.onsubmit = function(e) {
         booking_date: currentDate
     };
     
-    // Insert your EmailJS Service ID and Template ID here
+    
     let EMAILJS_SERVICE_ID = "service_za7jljt";
     let EMAILJS_TEMPLATE_ID = "template_wbn9e0b";
     
