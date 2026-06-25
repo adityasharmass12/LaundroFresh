@@ -61,7 +61,7 @@ let bookingMessage = document.getElementById("bookingMessage");
 let bookingError = document.getElementById("bookingError");
 let cartError = document.getElementById("cartError");
 
-let EMAILJS_PUBLIC_KEY = "ScxUNJavcLQmdDxk8"; 
+let EMAILJS_PUBLIC_KEY = ""; 
 emailjs.init(EMAILJS_PUBLIC_KEY);
 
 bookForm.onsubmit = function(e) {
@@ -97,8 +97,8 @@ bookForm.onsubmit = function(e) {
     };
     
     
-    let EMAILJS_SERVICE_ID = "service_za7jljt";
-    let EMAILJS_TEMPLATE_ID = "template_wbn9e0b";
+    let EMAILJS_SERVICE_ID = "";
+    let EMAILJS_TEMPLATE_ID = "";
     
     bookBtn.innerText = "Processing...";
     
