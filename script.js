@@ -58,11 +58,24 @@ function renderCart() {
 let bookForm = document.getElementById("bookForm");
 let bookBtn = document.getElementById("bookBtn");
 let bookingMessage = document.getElementById("bookingMessage");
+let bookingError = document.getElementById("bookingError");
+let cartError = document.getElementById("cartError");
 
-emailjs.init("YOUR_PUBLIC_KEY");
+// Insert your EmailJS Public Key here
+let EMAILJS_PUBLIC_KEY = "ScxUNJavcLQmdDxk8"; 
+emailjs.init(EMAILJS_PUBLIC_KEY);
 
 bookForm.onsubmit = function(e) {
     e.preventDefault();
+    
+    bookingMessage.style.display = "none";
+    bookingError.style.display = "none";
+    cartError.style.display = "none";
+    
+    if (cart.length === 0) {
+        cartError.style.display = "block";
+        return;
+    }
     
     let userName = document.getElementById("name").value;
     let userEmail = document.getElementById("email").value;
@@ -71,10 +84,6 @@ bookForm.onsubmit = function(e) {
     let serviceNames = "";
     for (let i = 0; i < cart.length; i++) {
         serviceNames = serviceNames + cart[i].name + " (x" + cart[i].qty + "), ";
-    }
-    
-    if (serviceNames === "") {
-        serviceNames = "No services selected";
     }
     
     let currentDate = new Date().toLocaleString();
@@ -88,21 +97,13 @@ bookForm.onsubmit = function(e) {
         booking_date: currentDate
     };
     
-    let serviceID = "YOUR_SERVICE_ID";
-    let templateID = "YOUR_TEMPLATE_ID";
-    
-    if (serviceID === "YOUR_SERVICE_ID") {
-        bookingMessage.style.display = "block";
-        bookForm.reset();
-        cart = [];
-        total = 0;
-        renderCart();
-        return;
-    }
+    // Insert your EmailJS Service ID and Template ID here
+    let EMAILJS_SERVICE_ID = "service_za7jljt";
+    let EMAILJS_TEMPLATE_ID = "template_wbn9e0b";
     
     bookBtn.innerText = "Processing...";
     
-    emailjs.send(serviceID, templateID, submitData)
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, submitData)
     .then(function() {
         bookingMessage.style.display = "block";
         bookForm.reset();
@@ -112,6 +113,7 @@ bookForm.onsubmit = function(e) {
         bookBtn.innerText = "Book Now";
     })
     .catch(function() {
+        bookingError.style.display = "block";
         bookBtn.innerText = "Book Now";
     });
 };
